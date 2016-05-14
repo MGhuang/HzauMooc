@@ -32,6 +32,7 @@ public class ListDivider extends RecyclerView.ItemDecoration {
             int width = recyclerView.getWidth() - recyclerView.getPaddingRight();
             for (int i = 0; i < childCount; i++) {
                 View childAt = recyclerView.getChildAt(i);
+                if(recyclerView.getChildAdapterPosition(childAt)==1 ){continue;}
                 int top = childAt.getTop();
                 drawable.setBounds(paddingleft, top - height, width, top);
                 drawable.draw(c);

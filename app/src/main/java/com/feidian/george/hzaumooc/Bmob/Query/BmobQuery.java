@@ -34,8 +34,8 @@ public class BmobQuery {
     {
         new Thread()
         {
-            private String key="class_kind";
-            private String[] value={Main_StaticValue.RECOMMEND_NAME,Main_StaticValue.PERFECT_NAME,Main_StaticValue.HOT_NAME};
+            private String key=Main_StaticValue.MAINVIEW_MAINVALUE_KEY;
+            private String[] value=Main_StaticValue.MAINVIEW_MAINVALUE_VALUE;
             @Override
             public void run() {
                 int i=1;
@@ -45,12 +45,56 @@ public class BmobQuery {
                 }
                 //获取图片轮播
                 PageViewResourceDataQuery("",Main_StaticValue.PAGE_NAME,map,context);
-                CloudClassDataQuery("",Main_StaticValue.CLOUD_NAME,map,context);
                 while(map.size()!=5){}
                 listener.UpdateOperate();
             }
         }.start();
     }
+
+
+
+    public static void findPerfectClass(final Map<String,ArrayList<?>> map,final Context context,final UpdateListener listener)
+    {
+        new Thread()
+        {
+            @Override
+            public void run() {
+                for(String value:Main_StaticValue.PerfectClass_VALUE)
+                {
+                    PerfectClassDataQuery(Main_StaticValue.PerfectClass_KEY,value,map,context);
+                }
+                while(map.size()!=Main_StaticValue.PerfectClass_VALUE.length);
+                listener.UpdateOperate();
+            }
+        }.start();
+    }
+
+    public static void findCloudClass(final Map<String,ArrayList<?>> map, final Context context, final UpdateListener listener)
+    {
+        new Thread()
+        {
+            @Override
+            public void run() {
+                CloudClassDataQuery(null,null,map,context);
+                while(map.size()!=1);
+                listener.UpdateOperate();
+            }
+        }.start();
+    }
+
+    public static  void findRecommedClass(final Map<String,ArrayList<?>> map, final Context context, final UpdateListener listener)
+    {
+        new Thread()
+        {
+            @Override
+            public void run() {
+                PerfectClassDataQuery(Main_StaticValue.PerfectClass_KEY,Main_StaticValue.PERFECTCLASS_TWO,map,context);
+                while(map.size()!=1);
+                listener.UpdateOperate();
+            }
+        }.start();
+    }
+
     private static void  MainValueDataQuery(String key,final String value,final Map<String,ArrayList<?>> map,Context context)
     {
         cn.bmob.v3.BmobQuery<MainValue> query=new cn.bmob.v3.BmobQuery<MainValue>();
@@ -134,6 +178,7 @@ public class BmobQuery {
     static void CloudClassDataQuery(String key,final String value,final Map<String,ArrayList<?>> map,Context context)
     {
         cn.bmob.v3.BmobQuery<CloudClass> query = new cn.bmob.v3.BmobQuery<CloudClass>();
+        query.addWhereMatches(key,value);
         query.order("-updatedAt");
         query.findObjects(context, new FindListener<CloudClass>() {
             @Override
@@ -142,7 +187,7 @@ public class BmobQuery {
                 {
                     System.out.println("yun ke tang "+c);
                 }
-                map.put(value, new ArrayList<CloudClass>(list));
+                map.put(Main_StaticValue.CLOUD_NAME, new ArrayList<CloudClass>(list));
                 System.out.println("CloudClass"+"成功");
                 System.out.println(map.size());
             }

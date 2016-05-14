@@ -77,10 +77,6 @@ public class GridAdapter extends BaseAdapter{
         switch(kind)
         {
             case MainAdapter.CLOUDCLASS_POSITION:
-                ArrayList<CloudClass>  cloudClasses= (ArrayList<CloudClass>) list;
-                holder.textView.setText(cloudClasses.get(position).getClass_name());
-                Glide.with(context).load(cloudClasses.get(position).getClass_image()).error(R.mipmap.ic_launcher).into(holder.imageView);
-                break;
             case MainAdapter.PERFECTCLASS_POSITION:
             case MainAdapter.RECOMMEND_POSITION:
                 ArrayList<MainValue> mainValues = (ArrayList<MainValue>) list;

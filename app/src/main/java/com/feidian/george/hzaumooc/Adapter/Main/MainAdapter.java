@@ -76,7 +76,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                 case CLOUDCLASS_POSITION:
                     if(map.containsKey(Main_StaticValue.CLOUD_NAME))
                     {
-                        cloudClassOperate((ViewHolderGird)holder, (ArrayList<CloudClass>) map.get(Main_StaticValue.CLOUD_NAME),position);
+                        mainValueOperate((ViewHolderGird)holder, (ArrayList<MainValue>) map.get(Main_StaticValue.CLOUD_NAME),position);
                     }
                     break;
                 default:
@@ -93,6 +93,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }
         else if(holder instanceof ViewHolderList && map.containsKey(Main_StaticValue.HOT_NAME))
         {
+            ListOperate((ViewHolderList)holder,(ArrayList<MainValue>)map.get(Main_StaticValue.HOT_NAME),position);
 
         }
 
@@ -104,7 +105,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         {
             return 0;
         }
-        return 4;
+        return map.size();
     }
 
     @Override
@@ -144,12 +145,20 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         holder.title.setText(list.get(0).getClass_kind());
         holder.image.setImageResource(Main_StaticValue.MAIN_TITLE_IMAGE[position-Main_StaticValue.DIFFERENCE]);
         holder.gridView.setAdapter(new GridAdapter(activity,list,position));
+        holder.setListener(list,position,activity);
     }
-    private void cloudClassOperate(ViewHolderGird holder, ArrayList<CloudClass> list,int position)
+    /*private void cloudClassOperate(ViewHolderGird holder, ArrayList<CloudClass> list,int position)
     {
         holder.title.setText("云课堂");
         holder.image.setImageResource(Main_StaticValue.MAIN_TITLE_IMAGE[position-Main_StaticValue.DIFFERENCE]);
         holder.gridView.setAdapter(new GridAdapter(activity,list,position));
+    }*/
+    private void ListOperate(ViewHolderList holder, ArrayList<MainValue> list,int position)
+    {
+        holder.title.setText("热门点击");
+        holder.logo.setImageResource(Main_StaticValue.MAIN_TITLE_IMAGE[position-Main_StaticValue.DIFFERENCE]);
+        holder.listView.setAdapter(new ListAdapter(activity,list));
+        holder.setListener(list,activity);
     }
 }
 

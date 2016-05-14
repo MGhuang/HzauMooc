@@ -26,5 +26,19 @@ public class BmobOperate {
     {
         BmobQuery.findMainView(map,context,listener);
     }
+    public void getPerfectClassData(Map<String,ArrayList<?>> map, Context context,UpdateListener listener)
+    {
+        BmobQuery.findPerfectClass( map, context,listener);
+    }
+    public void getCloudClassData(Map<String,ArrayList<?>> map, Context context,UpdateListener listener)
+    {
+        BmobQuery.findCloudClass(map,context,listener);
+
+    }
+    public void getRecommendClassData(Map<String,ArrayList<?>> map, Context context,UpdateListener listener)
+    {
+        BmobQuery.findRecommedClass(map,context,listener);
+
+    }
 
 }

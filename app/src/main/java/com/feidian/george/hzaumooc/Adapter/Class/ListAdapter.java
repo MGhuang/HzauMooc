@@ -1,4 +1,4 @@
-package com.feidian.george.hzaumooc.Adapter.Main;
+package com.feidian.george.hzaumooc.Adapter.Class;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.feidian.george.hzaumooc.Bmob.Bean.MainValue;
+import com.feidian.george.hzaumooc.Interface.Main.GetValued;
 import com.feidian.george.hzaumooc.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * Created by Administrator on 2016/5/12.
+ * Created by Administrator on 2016/5/14.
  */
-class ListAdapter extends BaseAdapter{
-    private List<MainValue> list;
+public class ListAdapter extends BaseAdapter{
+    private List<?> list;
     private Context context;
     private LayoutInflater layoutInflater;
-    public ListAdapter(Context context, List<MainValue> arrayList)
+    public ListAdapter(Context context, List<?> arrayList)
     {
         this.context=context;
         layoutInflater=LayoutInflater.from(context);
@@ -38,7 +38,7 @@ class ListAdapter extends BaseAdapter{
 
     @Override
     public Object getItem(int position) {
-        return list.get(position);
+        return position;
     }
 
     @Override
@@ -48,7 +48,6 @@ class ListAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         ViewHolder holder;
         if( convertView == null )
         {
@@ -60,9 +59,9 @@ class ListAdapter extends BaseAdapter{
         {
             holder = (ViewHolder) convertView.getTag();
         }
-        Glide.with(context).load(list.get(position).getClass_image()).error(R.mipmap.ic_launcher).into(holder.cover);
-        holder.author.setText(list.get(position).getClass_teacher());
-        holder.name.setText(list.get(position).getClass_name());
+        Glide.with(context).load(((GetValued)list.get(position)).getValued_class_Image()).error(R.mipmap.ic_launcher).into(holder.cover);
+        holder.author.setText(((GetValued)list.get(position)).getValued_class_teacher());
+        holder.name.setText(((GetValued)list.get(position)).getValued_class_name());
         return convertView;
     }
     class ViewHolder {
