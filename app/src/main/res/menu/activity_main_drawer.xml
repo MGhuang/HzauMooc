@@ -3,19 +3,19 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/main_personal"
             android:icon="@drawable/ic_menu_camera"
             android:title="个人信息" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/main_download"
             android:icon="@drawable/ic_menu_gallery"
             android:title="下载管理" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/main_history"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="浏览历史" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/main_set"
             android:icon="@drawable/ic_menu_manage"
             android:title="界面设置" />
     </group>
@@ -23,11 +23,11 @@
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/main_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="分享" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/main_send"
                 android:icon="@drawable/ic_menu_send"
                 android:title="意见反馈" />
         </menu>

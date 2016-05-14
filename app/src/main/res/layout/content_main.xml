@@ -8,8 +8,14 @@
     tools:context=".Activity.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/main_list"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/main_swipe"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/main_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 </RelativeLayout>
