@@ -60,7 +60,7 @@ class ListAdapter extends BaseAdapter{
         {
             holder = (ViewHolder) convertView.getTag();
         }
-        Glide.with(context).load(list.get(position).getClass_image()).error(R.mipmap.ic_launcher).into(holder.cover);
+        Glide.with(context).load(list.get(position).getClass_image()).error(R.mipmap.go_on).into(holder.cover);
         holder.author.setText(list.get(position).getClass_teacher());
         holder.name.setText(list.get(position).getClass_name());
         return convertView;

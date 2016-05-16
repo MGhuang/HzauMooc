@@ -35,6 +35,7 @@ class ViewHolderGird extends RecyclerView.ViewHolder {
     public ViewHolderGird(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
+        image.setScaleType(ImageView.ScaleType.FIT_XY);
     }
     public void setListener(ArrayList<MainValue> list, int kind, Context context)
     {

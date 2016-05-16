@@ -75,7 +75,6 @@ public class ClassActivity extends BaseActivity implements UpdateListener,SwipeR
         Bundle bundle=getIntent().getExtras();
         this.kind=bundle.getInt(MoreOnClickListener.BUNDLE_KIND);
 
-
         checkClass(kind);
         setRecyclerView();
         setSwipeRefreshLayout();
@@ -129,6 +128,5 @@ public class ClassActivity extends BaseActivity implements UpdateListener,SwipeR
     @Override
     public void onRefresh() {
         checkClass(kind);
-
     }
 }

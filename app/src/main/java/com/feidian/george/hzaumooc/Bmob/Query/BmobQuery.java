@@ -103,10 +103,10 @@ public class BmobQuery {
         query.findObjects(context, new FindListener<MainValue>() {
             @Override
             public void onSuccess(List<MainValue> list) {
-                for(MainValue m:list)
+                /*for(MainValue m:list)
                 {
                     System.out.println(m.getClass_kind());
-                }
+                }*/
                 map.put(value,new ArrayList<MainValue>(list));
                 System.out.println("MainValue"+"成功");
                 System.out.println(map.size());
@@ -183,10 +183,6 @@ public class BmobQuery {
         query.findObjects(context, new FindListener<CloudClass>() {
             @Override
             public void onSuccess(List<CloudClass> list) {
-                for(CloudClass c:list)
-                {
-                    System.out.println("yun ke tang "+c);
-                }
                 map.put(Main_StaticValue.CLOUD_NAME, new ArrayList<CloudClass>(list));
                 System.out.println("CloudClass"+"成功");
                 System.out.println(map.size());

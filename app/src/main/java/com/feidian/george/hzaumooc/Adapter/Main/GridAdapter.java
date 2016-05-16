@@ -81,11 +81,11 @@ public class GridAdapter extends BaseAdapter{
             case MainAdapter.RECOMMEND_POSITION:
                 ArrayList<MainValue> mainValues = (ArrayList<MainValue>) list;
                 holder.textView.setText(mainValues.get(position).getClass_name());
-                Glide.with(context).load(mainValues.get(position).getClass_image()).error(R.mipmap.ic_launcher).into(holder.imageView);
+                Glide.with(context).load(mainValues.get(position).getClass_image()).error(R.mipmap.go_on).into(holder.imageView);
                 break;
             default:
                 holder.textView.setText("加载中...");
-                holder.imageView.setImageResource(R.mipmap.ic_launcher);
+                holder.imageView.setImageResource(R.mipmap.go_on);
                 break;
         }
         return convertView;

@@ -136,7 +136,8 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         for(int i=0;i<list.size();i++)
         {
             sliderView[i] = new com.daimajia.slider.library.SliderTypes.DefaultSliderView(activity);
-            sliderView[i].image(list.get(i).getImageUrl()).setScaleType(BaseSliderView.ScaleType.CenterCrop);
+            System.out.println(list.get(i).getImageUrl());
+            sliderView[i].image(list.get(i).getImageUrl()).setScaleType(BaseSliderView.ScaleType.CenterCrop).error(R.mipmap.go_on);
              holder.sliderLayout.addSlider(sliderView[i]);
         }
     }
