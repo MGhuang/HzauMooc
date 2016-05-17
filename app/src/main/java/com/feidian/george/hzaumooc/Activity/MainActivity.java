@@ -1,5 +1,6 @@
 package com.feidian.george.hzaumooc.Activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
@@ -106,9 +107,11 @@ public class MainActivity extends BaseActivity
         int id = item.getItemId();
 
         if (id == R.id.main_personal) {
-            // Handle the camera action
+            Intent intent = new Intent(MainActivity.this,PersonActivity.class);
+            startActivity(intent);
         } else if (id == R.id.main_download) {
-
+              Intent intent = new Intent(MainActivity.this,DownloadActivity.class);
+              startActivity(intent);
         } else if (id == R.id.main_history) {
 
         } else if (id == R.id.main_set) {
@@ -116,7 +119,8 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.main_share) {
 
         } else if (id == R.id.main_send) {
-
+               Intent intent = new Intent(MainActivity.this,SuggestActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

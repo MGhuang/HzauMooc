@@ -35,4 +35,5 @@ dependencies {
     compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
     compile 'com.android.support:support-v4:23.2.1'
     compile 'com.ogaclejapan.smarttablayout:utils-v4:1.6.0@aar'
+    compile project(':vitamio')
 }

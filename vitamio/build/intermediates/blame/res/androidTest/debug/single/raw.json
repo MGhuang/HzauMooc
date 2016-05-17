@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\myadroid\\Save\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\raw\\libarm.so",
+        "source": "D:\\myadroid\\Save\\vitamio\\build\\intermediates\\bundles\\debug\\res\\raw\\libarm.so"
+    },
+    {
+        "merged": "D:\\myadroid\\HzauMooc\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\raw\\libarm.so",
+        "source": "D:\\myadroid\\HzauMooc\\vitamio\\build\\intermediates\\bundles\\debug\\res\\raw\\libarm.so"
+    },
+    {
+        "merged": "C:\\Users\\lenovo\\AndroidStudioProjects\\Save\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\raw\\libarm.so",
+        "source": "C:\\Users\\lenovo\\AndroidStudioProjects\\Save\\vitamio\\build\\intermediates\\bundles\\debug\\res\\raw\\libarm.so"
+    }
+]

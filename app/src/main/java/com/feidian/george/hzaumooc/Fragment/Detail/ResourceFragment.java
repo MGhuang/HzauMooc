@@ -41,7 +41,6 @@ public class ResourceFragment extends Fragment{
     TextView teacherwords;
     @Bind(R.id.detail_rl_timeline_layout)
     TimeRecycleView timeRecycleView;
-    Map<Integer,Integer> map=new HashMap<Integer, Integer>();
     List<String>  resource;
     List<String> updatetime;
     List<String> resourcename;
