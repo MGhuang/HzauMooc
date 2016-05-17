@@ -5,4 +5,37 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string-array name="static_resourcename">
+        <item>第一章 初次接触Java</item>
+        <item>第二章 Java语言基础</item>
+        <item>第三章 Java程序工程规范</item>
+        <item>第四章 面向对象（上）</item>
+        <item>第五章 面向对象（中）</item>
+        <item>第六章 面向对象（下）</item>
+        <item>第七章 异常</item>
+        <item>第八章 Java常用类库</item>
+        <item>第九章 线程</item>
+    </string-array>
+    <string-array name="static_resourceweb">
+        <item>http://211.69.141.12/upload/20160223221220768.ppt</item>
+        <item>http://211.69.141.12/upload/20160225124106551.ppt</item>
+        <item>http://211.69.141.12/upload/20160229183300149.ppt</item>
+        <item>http://211.69.141.12/upload/20160307221449573.ppt</item>
+        <item>http://211.69.141.12/upload/20160321202426841.ppt</item>
+        <item>http://211.69.141.12/upload/20160321202426841.ppt</item>
+        <item>http://211.69.141.12/upload/20160321202439726.ppt</item>
+        <item>http://211.69.141.12/upload/20160324204413774.ppt</item>
+        <item>http://211.69.141.12/upload/20160404214958158.ppt</item>
+    </string-array>
+    <string-array name="static_resourceupdate">
+        <item>2016-05-10</item>
+        <item>2016-05-10</item>
+        <item>2016-05-10</item>
+        <item>2016-05-11</item>
+        <item>2016-05-11</item>
+        <item>2016-05-11</item>
+        <item>2016-05-11</item>
+        <item>2016-05-11</item>
+        <item>2016-05-09</item>
+    </string-array>
 </resources>
