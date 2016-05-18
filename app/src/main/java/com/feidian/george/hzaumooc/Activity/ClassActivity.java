@@ -19,6 +19,7 @@ import com.feidian.george.hzaumooc.Interface.Class.UpdateListener;
 import com.feidian.george.hzaumooc.Listener.Main.MoreOnClickListener;
 import com.feidian.george.hzaumooc.R;
 import com.feidian.george.hzaumooc.Tool.Main_StaticValue;
+import com.feidian.george.hzaumooc.Tool.NetConnect;
 import com.feidian.george.hzaumooc.View.ListDivider;
 
 import java.util.ArrayList;
@@ -33,8 +34,6 @@ import butterknife.ButterKnife;
  * Created by Administrator on 2016/5/11.
  */
 public class ClassActivity extends BaseActivity implements UpdateListener,SwipeRefreshLayout.OnRefreshListener{
-    private static final int SUCCESS_GET_CLASSDATA= 9;
-    private static final int WRONG_GET_CLASSDATA=0;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -52,14 +51,18 @@ public class ClassActivity extends BaseActivity implements UpdateListener,SwipeR
         public void handleMessage(Message msg) {
             switch (msg.what)
             {
-                case SUCCESS_GET_CLASSDATA:
+                case Main_StaticValue.SUCCESS_GET_DATA:
                     refreshLayout.setRefreshing(false);
                     adapter.notifyDataSetChanged();
                     System.out.println(map.size());
                     break;
+                case Main_StaticValue.WRONG_GET_DATA:
+                    refreshLayout.setRefreshing(false);
+                    Toast.makeText(ClassActivity.this,"亲，请检查网络...",Toast.LENGTH_SHORT).show();
+                    break;
                 default:
                     refreshLayout.setRefreshing(false);
-                    Toast.makeText(ClassActivity.this,"网络太差",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ClassActivity.this,"亲，请检查网络...",Toast.LENGTH_SHORT).show();
                     break;
             }
             System.out.println("成功了"+map.size());
@@ -117,16 +120,30 @@ public class ClassActivity extends BaseActivity implements UpdateListener,SwipeR
         refreshLayout.setColorSchemeColors(Color.BLUE, Color.RED,Color.GREEN);
         refreshLayout.setOnRefreshListener(this);
         refreshLayout.setProgressViewOffset(false, 0, 100);
-        refreshLayout.setRefreshing(true);
+        netConnect();
     }
 
     @Override
     public void UpdateOperate() {
-        handler.sendEmptyMessage(SUCCESS_GET_CLASSDATA);
+        handler.sendEmptyMessage(Main_StaticValue.SUCCESS_GET_DATA);
+    }
+
+    @Override
+    public void errorToast() {
+        handler.sendEmptyMessage(Main_StaticValue.WRONG_GET_DATA);
     }
 
     @Override
     public void onRefresh() {
-        checkClass(kind);
+        netConnect();
+    }
+    private void netConnect()
+    {
+        if(NetConnect.isNetConnect(this))
+        {
+            checkClass(kind);
+        }
+        else
+            handler.sendEmptyMessage(Main_StaticValue.WRONG_GET_DATA);
     }
 }

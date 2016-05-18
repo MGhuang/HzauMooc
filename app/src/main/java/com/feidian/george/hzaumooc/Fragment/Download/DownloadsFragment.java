@@ -88,7 +88,7 @@ public class DownloadsFragment extends Fragment implements View.OnClickListener{
             }
             else if(name.equals("ppt"))
             {
-                image=R.mipmap.ppt2;
+                image=R.mipmap.ppt;
             }
             else if(name.equals("swf"))
             {

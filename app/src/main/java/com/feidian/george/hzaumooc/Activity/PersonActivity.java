@@ -13,22 +13,28 @@ import com.feidian.george.hzaumooc.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 
 /**
  * Created by lenovo on 2016/4/21.
  */
 public class PersonActivity extends Activity{
     private List<More> data = new ArrayList<>();
-    private ListView listView = null;
+
+    @Bind(R.id.person_listview)
+    ListView listView = null;
+
     private MoreAdapter adapter;
     private String[] name = {"消息提醒","历史纪录","反馈建议","关于我们","退出登录"};
     private int[] image = {R.mipmap.news,R.mipmap.record,R.mipmap.suggest,R.mipmap.about,R.mipmap.out};
     @Override
     protected void onCreate(Bundle savedInstanceState){
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person);
-        listView = (ListView)super.findViewById(R.id.full);
+        ButterKnife.bind(this);
+
         init();
     }
     //初始化列表

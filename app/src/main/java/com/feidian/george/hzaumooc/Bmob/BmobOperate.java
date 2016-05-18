@@ -2,10 +2,12 @@ package com.feidian.george.hzaumooc.Bmob;
 
 import android.content.Context;
 
-import com.feidian.george.hzaumooc.Bmob.Query.BmobQuery;
+import com.feidian.george.hzaumooc.Bmob.Bean.Evalute;
+import com.feidian.george.hzaumooc.Bmob.Query.MyBmobQuery;
 import com.feidian.george.hzaumooc.Interface.Class.UpdateListener;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,21 +26,25 @@ public class BmobOperate {
     }
     public void getMainData(Map<String,ArrayList<?>> map, Context context,UpdateListener listener)
     {
-        BmobQuery.findMainView(map,context,listener);
+        MyBmobQuery.findMainView(map,context,listener);
     }
     public void getPerfectClassData(Map<String,ArrayList<?>> map, Context context,UpdateListener listener)
     {
-        BmobQuery.findPerfectClass( map, context,listener);
+        MyBmobQuery.findPerfectClass( map, context,listener);
     }
     public void getCloudClassData(Map<String,ArrayList<?>> map, Context context,UpdateListener listener)
     {
-        BmobQuery.findCloudClass(map,context,listener);
+        MyBmobQuery.findCloudClass(map,context,listener);
 
     }
     public void getRecommendClassData(Map<String,ArrayList<?>> map, Context context,UpdateListener listener)
     {
-        BmobQuery.findRecommedClass(map,context,listener);
+        MyBmobQuery.findRecommedClass(map,context,listener);
 
+    }
+    public void getEvaluteDate(String key,String value,List<Evalute> list,Context context,UpdateListener listener)
+    {
+        MyBmobQuery.findEvlute(key,value,list,context,listener);
     }
 
 }

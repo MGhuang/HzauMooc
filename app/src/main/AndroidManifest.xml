@@ -37,10 +37,17 @@
         <activity android:name=".Activity.DetailActivity"
             android:label="DetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activity.DownloadActivity"/>
-        <activity android:name=".Activity.PersonActivity"/>
-        <activity android:name=".Activity.SuggestActivity"/>
-        <activity android:name=".Activity.EvaluteActivity"/>
+        <activity android:name=".Activity.DownloadActivity"
+            android:label="DownloadActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".Activity.PersonActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Activity.SuggestActivity"
+            android:label="SuggeestActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Activity.EvaluteActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

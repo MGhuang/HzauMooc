@@ -19,7 +19,6 @@ public class VideoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private List<String> videoImage_List;
     private List<String> videoName_List;
     private List<String> videoTName_List;
-   // private List<String>
     public VideoListAdapter(Context context)
     {
         this.context=context;
@@ -37,6 +36,9 @@ public class VideoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             ((ViewHolderCard)holder).image.setImageResource(R.mipmap.school);
             ((ViewHolderCard)holder).name.setText("魅力汉语");
             ((ViewHolderCard)holder).tname.setText("刘冠成");
+            ((ViewHolderCard)holder).setOnClickListener("魅力汉语",
+                    "http://211.69.141.12:1221/upload/b87e1021-8fe4-4d8c-abce-21146617e942.mp4",
+                    context);
         }
 
     }

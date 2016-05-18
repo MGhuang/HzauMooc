@@ -42,8 +42,8 @@ public class DetailActivity extends BaseActivity{
 
 
         FragmentPagerItems.Creator creator = FragmentPagerItems.with(this);
-        creator.add("教学视频", VideoListFragment.class, send);
         creator.add("教学文件", ResourceFragment.class, send);
+        creator.add("教学视频", VideoListFragment.class, send);
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(getSupportFragmentManager(), creator.create());
         viewPager.setAdapter(adapter);
         smartTabLayout.setViewPager(viewPager);

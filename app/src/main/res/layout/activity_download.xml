@@ -18,14 +18,14 @@
                 android:text="下载完成"
                 android:gravity="center"
                 android:textSize="15sp"
-                android:id="@+id/tab_app"
+                android:id="@+id/download_t_finish"
                 android:textColor="@color/green"
                 android:layout_height="match_parent"/>
 
             <TextView android:layout_width="0dp"
                 android:layout_weight="1"
                 android:text="正在下载"
-                android:id="@+id/tab_game"
+                android:id="@+id/download_t_doing"
                 android:gravity="center"
                 android:textSize="15sp"
                 android:textColor="@color/gray_white"
@@ -35,13 +35,13 @@
         <View
             android:layout_width="0dp"
             android:layout_height="3dp"
-            android:id="@+id/line"
+            android:id="@+id/download_t_line"
             android:layout_alignParentBottom="true"
             android:background="@color/green" />
     </RelativeLayout>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
+        android:id="@+id/download_t_viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     </android.support.v4.view.ViewPager>

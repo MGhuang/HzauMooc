@@ -7,17 +7,18 @@
         android:layout_width="50dp"
         android:layout_height="50dp">
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/person_l_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:src="@mipmap/admin"/>
     </RelativeLayout>
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/person_l_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
+        android:layout_gravity="center_vertical"
         android:text="我的账号"/>
     <ImageView
         android:src="@mipmap/go"

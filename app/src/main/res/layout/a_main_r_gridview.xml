@@ -15,9 +15,7 @@
             android:id="@+id/main_rg_logo"
             android:layout_width="22sp"
             android:layout_height="22sp"
-            android:paddingLeft="6dp"
-            android:paddingTop="2dp"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitXY" />
 
         <TextView
             android:id="@+id/main_rg_title"

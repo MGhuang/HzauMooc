@@ -7,6 +7,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -25,14 +26,17 @@ public class VideoListFragment  extends Fragment{
     @Bind(R.id.main_list)
     RecyclerView recyclerView;
 
+    VideoListAdapter videoListAdapter;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Bundle bundle = getArguments();
         View rootView=inflater.inflate(R.layout.content_main,container,false);
         ButterKnife.bind(this,rootView);
+        videoListAdapter = new VideoListAdapter(getActivity());
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),1));
-        recyclerView.setAdapter(new VideoListAdapter(getActivity()));
+        recyclerView.setAdapter(videoListAdapter);
         return rootView;
     }
 }

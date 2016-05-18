@@ -6,6 +6,9 @@ import com.feidian.george.hzaumooc.R;
  * Created by Administrator on 2016/5/13.
  */
 public class Main_StaticValue {
+    public final static int SUCCESS_GET_DATA= 9;  //用于设定实现UpdateListener的handler  表示是否获得数据成功
+    public final static int WRONG_GET_DATA=0;
+
     public static final int DIFFERENCE=1; //记录主布局各项与MAIN_TITLE_IMAGE的对应差
     public static final String PAGE_NAME="图片轮播";
     public static final String RECOMMEND_NAME="官方推荐";

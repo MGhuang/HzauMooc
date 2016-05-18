@@ -15,23 +15,35 @@ import com.feidian.george.hzaumooc.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 
 public class SuggestActivity extends Activity {
     private List<Talk> msgList=new ArrayList<Talk>();
-    private ListView list_view;
-    private EditText input_text;
-    private Button send;
+
+    @Bind(R.id.suggest_listview)
+    ListView list_view;
+    @Bind(R.id.suggest_inputtext)
+    EditText input_text;
+    @Bind(R.id.suggest_send)
+    Button send;
+    @Bind(R.id.suggest_telephone)
+    EditText telephone;
+    @Bind(R.id.suggest_e_mail)
+    EditText e_mail;
+
+
     private TalkAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggest);
 
+        ButterKnife.bind(this);
+
         initData();
-        list_view = (ListView) findViewById(R.id.list_view);
-        input_text = (EditText) findViewById(R.id.input_text);
-        send = (Button) findViewById(R.id.send);
+
         adapter = new TalkAdapter(this,R.layout.a_suggest_l_item, msgList);
         list_view.setAdapter(adapter);
 

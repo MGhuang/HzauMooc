@@ -10,6 +10,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 
@@ -18,37 +20,72 @@ import com.feidian.george.hzaumooc.Fragment.Download.DownloadsFragment;
 import com.feidian.george.hzaumooc.R;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 
 public class DownloadActivity extends FragmentActivity {
-    private ArrayList<Fragment> fragments;
-    private ViewPager viewPager;
-    private TextView tab_game;
-    private TextView tab_app;
+    private List<Fragment> fragments;
+
+    @Bind(R.id.download_t_viewPager)
+     ViewPager viewPager;
+    @Bind(R.id.download_t_doing)
+     TextView doing;
+    @Bind(R.id.download_t_finish)
+     TextView finish;
+    @Bind(R.id.download_t_line)
+     View line;
+
     private int line_width;
-    private View line;
     private Handler handler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download);
-        tab_game = (TextView) findViewById(R.id.tab_game);
-        tab_app = (TextView) findViewById(R.id.tab_app);
-        line = findViewById(R.id.line);
+        ButterKnife.bind(this);
         // 初始化TextView动画
-        // ViewPropertyAnimator.animate(tab_app).scaleX(1.2f).setDuration(0);
-        tab_app.animate().scaleX(1.2f).setDuration(0); //设置动画，字扩大到1.2倍
-        //ViewPropertyAnimator.animate(tab_app).scaleY(1.2f).setDuration(0);
-        tab_app.animate().scaleY(1.2f).setDuration(0);
+        setAnimation(1.0f,1.0f,1.2f,1.2f);
 
-        fragments = new ArrayList<Fragment>();//填充两个fragment
+        initView();
+
+    }
+    // 根据传入的值来改变状态
+    private void changeState(int arg0) { //设置选择的变化动画
+        Message msg = new Message();
+        msg.what = 1;
+        handler.sendMessage(msg);
+        //根据ViewPage的移动改变字体的大小及颜色
+        if (arg0 == 0) {
+            finish.setTextColor(getResources().getColor(R.color.green));
+            doing.setTextColor(getResources().getColor(R.color.gray_white));
+            setAnimation(1.0f,1.0f,1.2f,1.2f);
+        } else {
+            doing.setTextColor(getResources().getColor(R.color.green));
+            finish.setTextColor(getResources().getColor(R.color.gray_white));
+            setAnimation(1.2f,1.2f,1.0f,1.0f);
+        }
+    }
+    public void setHandler(Handler handler){
+        this.handler = handler;
+    }
+    private void setAnimation(float doing_scaleX,float doing_scaleY,float finish_scaleX,float finish_scaleY)
+    {
+        finish.animate().scaleX(finish_scaleX).setDuration(200);
+        finish.animate().scaleY(finish_scaleY).setDuration(200);
+        doing.animate().scaleX(doing_scaleX).setDuration(200);
+        doing.animate().scaleY(doing_scaleY).setDuration(200);
+    }
+    private void initView()
+    {
+        fragments = new ArrayList<Fragment>();   //填充两个fragment
         fragments.add(new DownloadsFragment());
         fragments.add(new DownloadingFragment());
         line_width = getWindowManager().getDefaultDisplay().getWidth()
                 / fragments.size();//计算指示栏的长度
         line.getLayoutParams().width = line_width;//设置指示栏的长度
-        line.requestLayout();//??
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        line.requestLayout();
         viewPager.setAdapter(new FragmentStatePagerAdapter(
                 getSupportFragmentManager()) {
 
@@ -82,7 +119,7 @@ public class DownloadActivity extends FragmentActivity {
             }
         });
 
-        tab_game.setOnClickListener(new OnClickListener() {
+        doing.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -90,37 +127,12 @@ public class DownloadActivity extends FragmentActivity {
             }
         });
 
-        tab_app.setOnClickListener(new OnClickListener() {
+        finish.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
                 viewPager.setCurrentItem(0);
             }
         });
-    }
-    // 根据传入的值来改变状态
-    private void changeState(int arg0) { //设置选择的变化动画
-        Message msg = new Message();
-        msg.what = 1;
-        handler.sendMessage(msg);
-        //根据ViewPage的移动改变字体的大小及颜色
-        if (arg0 == 0) {
-            tab_app.setTextColor(getResources().getColor(R.color.green));
-            tab_game.setTextColor(getResources().getColor(R.color.gray_white));
-            tab_app.animate().scaleX(1.2f).setDuration(200);
-            tab_app.animate().scaleY(1.2f).setDuration(200);
-            tab_game.animate().scaleX(1.0f).setDuration(200);
-            tab_game.animate().scaleY(1.0f).setDuration(200);
-        } else {
-            tab_game.setTextColor(getResources().getColor(R.color.green));
-            tab_app.setTextColor(getResources().getColor(R.color.gray_white));
-            tab_app.animate().scaleX(1.0f).setDuration(200);
-            tab_app.animate().scaleY(1.0f).setDuration(200);
-            tab_game.animate().scaleX(1.2f).setDuration(200);
-            tab_game.animate().scaleY(1.2f).setDuration(200);
-        }
-    }
-    public void setHandler(Handler handler){
-        this.handler = handler;
     }
 }

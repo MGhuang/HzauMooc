@@ -3,87 +3,98 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <RelativeLayout
-        android:id="@+id/top"
+        android:id="@+id/evalute_topview"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:background="#009688">
+
         <RelativeLayout
             android:layout_width="55dp"
             android:layout_height="55dp">
-     <ImageView
-         android:id="@+id/back"
-         android:src="@mipmap/back1"
-         android:layout_centerInParent="true"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/evalute_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/go_back" />
         </RelativeLayout>
+
         <TextView
-            android:id="@+id/videoName"
-            android:layout_centerInParent="true"
+            android:id="@+id/evalute_videoName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:text="视频播放"
             android:textColor="@color/gray_white"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
     </RelativeLayout>
+
     <FrameLayout
-        android:id="@+id/frame"
+        android:id="@+id/evalute_frame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <io.vov.vitamio.widget.VideoView
-        android:id="@+id/vedio"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" >
-    </io.vov.vitamio.widget.VideoView>
+
+        <io.vov.vitamio.widget.VideoView
+            android:id="@+id/evalute_vedio"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"></io.vov.vitamio.widget.VideoView>
+
         <ImageView
-            android:id="@+id/button"
-            android:src="@mipmap/suo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:id="@+id/evalute_bigscreen"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/suo" />
     </FrameLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp" >
-    <TextView
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="评论区"/>
+        android:layout_height="30dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="评论区"
+            android:textSize="20sp" />
     </RelativeLayout>
+
     <LinearLayout
-        android:id="@+id/under"
+        android:id="@+id/evalute_under"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <ListView
-            android:id="@+id/evalute"
+            android:id="@+id/evalute_listview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <EditText
-                android:id="@+id/edit"
+                android:id="@+id/evalute_edit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/circle_rect"
                 android:hint="写下你的意见..."
-                android:maxLines="2"
-                android:background="@drawable/edit"
-                />
+                android:maxLines="2" />
+
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/evalute_send"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="评论"
-                android:background="@drawable/button"
-                />
+                android:background="@drawable/cicle_button"
+                android:text="评论" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

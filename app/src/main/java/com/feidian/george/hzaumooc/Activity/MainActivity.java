@@ -1,7 +1,9 @@
 package com.feidian.george.hzaumooc.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Message;
@@ -26,6 +28,8 @@ import com.feidian.george.hzaumooc.Bmob.BmobOperate;
 import com.feidian.george.hzaumooc.Interface.Class.UpdateListener;
 import com.feidian.george.hzaumooc.R;
 import com.feidian.george.hzaumooc.Tool.AppTool;
+import com.feidian.george.hzaumooc.Tool.Main_StaticValue;
+import com.feidian.george.hzaumooc.Tool.NetConnect;
 import com.feidian.george.hzaumooc.View.ListDivider;
 
 import java.io.File;
@@ -46,26 +50,31 @@ public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener,UpdateListener,
         SwipeRefreshLayout.OnRefreshListener{
 
-    private final static int SUCCESS_GET_MAINDATA= 9;
+
     MainAdapter adapter;
     Map<String,ArrayList<?>> map =new HashMap<String, ArrayList<?>>(MainAdapter.ITEM_ACCOUT+2);
     @Bind(R.id.main_list)
     RecyclerView recyclerView;
     @Bind(R.id.main_swipe)
     SwipeRefreshLayout refreshLayout;
+
     private Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
             switch(msg.what)
             {
-                case SUCCESS_GET_MAINDATA:
+                case Main_StaticValue.SUCCESS_GET_DATA:
                     refreshLayout.setRefreshing(false);
                     adapter.notifyDataSetChanged();
                     System.out.println(map.size());
                     break;
+                case Main_StaticValue.WRONG_GET_DATA:
+                    refreshLayout.setRefreshing(false);
+                    Toast.makeText(MainActivity.this,"亲，请检查网络哦...",Toast.LENGTH_SHORT).show();
+                    break;
                 default:
                     refreshLayout.setRefreshing(false);
-                    Toast.makeText(MainActivity.this,"网络太差",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"亲，请检查网络哦...",Toast.LENGTH_SHORT).show();
                     break;
             }
         }
@@ -79,6 +88,7 @@ public class MainActivity extends BaseActivity
         ButterKnife.bind(this);
         //setData();
         Bmob.initialize(this,"bdc6b1e1572437dda9938ac54b702a5b");
+
         setRecyclerView();
         setSwipeRefreshLayout();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -141,8 +151,8 @@ public class MainActivity extends BaseActivity
         refreshLayout.setColorSchemeColors(Color.BLUE, Color.RED,Color.GREEN);
         refreshLayout.setOnRefreshListener(this);
         refreshLayout.setProgressViewOffset(false, 0, 100);
-        refreshLayout.setRefreshing(true);
-        getData();
+        netConnect();
+
     }
     private void setData()
     {
@@ -159,15 +169,31 @@ public class MainActivity extends BaseActivity
     }
     @Override
     public void onRefresh() {
-        getData();
+
+        netConnect();
     }
 
     @Override
     public void UpdateOperate() {
-        handler.sendEmptyMessage(9);
+        handler.sendEmptyMessage(Main_StaticValue.SUCCESS_GET_DATA);
     }
+
+    @Override
+    public void errorToast() {
+        handler.sendEmptyMessage(Main_StaticValue.WRONG_GET_DATA);
+    }
+
     private void getData()
     {
         BmobOperate.Inist().getMainData(map,this,this);
+    }
+    private void netConnect()
+    {
+        if(NetConnect.isNetConnect(this))
+        {
+            getData();
+        }
+        else
+            handler.sendEmptyMessage(Main_StaticValue.WRONG_GET_DATA);
     }
 }

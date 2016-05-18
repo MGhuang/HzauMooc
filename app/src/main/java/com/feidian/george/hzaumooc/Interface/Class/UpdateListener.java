@@ -5,4 +5,5 @@ package com.feidian.george.hzaumooc.Interface.Class;
  */
 public interface UpdateListener {
     public void UpdateOperate();
+    public void errorToast();
 }

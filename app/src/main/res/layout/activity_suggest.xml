@@ -24,30 +24,32 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/telephone"
+            android:id="@+id/suggest_telephone_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="手机：" />
 
         <EditText
+            android:id="@+id/suggest_telephone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/telephone"
+            android:layout_toRightOf="@id/suggest_telephone_text"
             android:background="@null" />
 
         <TextView
-            android:id="@+id/e_mail"
+            android:id="@+id/suggest_e_mail_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/telephone"
+            android:layout_below="@id/suggest_telephone_text"
             android:paddingTop="30dp"
             android:text="邮箱：" />
 
         <EditText
+            android:id="@+id/suggest_e_mail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/telephone"
-            android:layout_toRightOf="@id/e_mail"
+            android:layout_below="@id/suggest_telephone_text"
+            android:layout_toRightOf="@id/suggest_e_mail_text"
             android:background="@null"
             android:paddingTop="30dp" />
     </RelativeLayout>
@@ -57,7 +59,7 @@
         android:layout_height="3dp" />
 
     <ListView
-        android:id="@+id/list_view"
+        android:id="@+id/suggest_listview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -70,19 +72,19 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/input_text"
+            android:id="@+id/suggest_inputtext"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/edit"
+            android:background="@drawable/circle_rect"
             android:hint="写下你的意见..."
             android:maxLines="2" />
 
         <Button
-            android:id="@+id/send"
+            android:id="@+id/suggest_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/button"
+            android:background="@drawable/cicle_button"
             android:text="发表" />
     </LinearLayout>
 </LinearLayout>

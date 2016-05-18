@@ -15,8 +15,6 @@
             android:id="@+id/main_rl_logo"
             android:layout_width="22sp"
             android:layout_height="22sp"
-            android:paddingLeft="6dp"
-            android:paddingTop="2dp"
             android:scaleType="fitCenter" />
 
         <TextView

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.feidian.george.hzaumooc.Bmob.Bean.CloudClass;
+import com.feidian.george.hzaumooc.Bmob.Bean.Evalute;
 import com.feidian.george.hzaumooc.Bmob.Bean.MainValue;
 import com.feidian.george.hzaumooc.Bmob.Bean.PageViewResource;
 import com.feidian.george.hzaumooc.Bmob.Bean.PerfectClass;
@@ -21,7 +22,21 @@ import cn.bmob.v3.listener.FindListener;
 /**
  * Created by Administrator on 2016/5/12.
  */
-public class BmobQuery {
+public class MyBmobQuery {
+
+
+
+    public static void findEvlute(final String key, final String value, final List<Evalute> list, final Context context, final UpdateListener listener)
+    {
+        new Thread()
+        {
+            @Override
+            public void run() {
+                EvaluteQuery(key,value,list,context,listener);
+
+            }
+        }.start();
+    }
     /*
     *用于查找主界面的数据
     * viewpage 图片轮播
@@ -118,7 +133,7 @@ public class BmobQuery {
                 }catch (GetDataException e)
                 {
                     e.printStackTrace();
-                    System.out.println(e.getMessage());
+                    System.out.println(e.getMessage()+s);
                 }
 
             }
@@ -143,7 +158,7 @@ public class BmobQuery {
                 }catch (GetDataException e)
                 {
                     e.printStackTrace();
-                    System.out.println(e.getMessage());
+                    System.out.println(e.getMessage()+s);
                 }
 
             }
@@ -169,7 +184,7 @@ public class BmobQuery {
                     throw new GetDataException(s + "获取" + value + "失败" + "PageViewResourceDataQuery");
                 } catch (GetDataException e) {
                     e.printStackTrace();
-                    System.out.println(e.getMessage());
+                    System.out.println(e.getMessage()+s);
                 }
 
             }
@@ -194,12 +209,30 @@ public class BmobQuery {
                     throw new GetDataException(s + "获取" + value + "失败" + "CloudClassDataQuery");
                 } catch (GetDataException e) {
                     e.printStackTrace();
-                    System.out.println(e.getMessage());
+                    System.out.println(e.getMessage()+s);
                 }
 
             }
         });
 
     }
+    private static void EvaluteQuery(String key, final String value, final List<Evalute> elist, Context context, final UpdateListener listener)
+    {
+        cn.bmob.v3.BmobQuery<Evalute> bmobQuery=new cn.bmob.v3.BmobQuery<Evalute>();
+        bmobQuery.addWhereMatches(key,value);
+        bmobQuery.order("-updatedAt");
+        bmobQuery.setLimit(10);
+        bmobQuery.findObjects(context, new FindListener<Evalute>() {
+            @Override
+            public void onSuccess(List<Evalute> list) {
+                elist.addAll(list);
+                listener.UpdateOperate();
+            }
 
+            @Override
+            public void onError(int i, String s) {
+                listener.errorToast();
+            }
+        });
+    }
 }
