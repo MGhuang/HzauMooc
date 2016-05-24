@@ -37,7 +37,7 @@ class ViewHolderList extends RecyclerView.ViewHolder{
         super(itemView);
         ButterKnife.bind(this, itemView);
     }
-    public void setListener(ArrayList<?> list, Context context)
+    public void setListener(ArrayList<?> list, Context context)  //重新设置监听器
     {
         setItemOnClickListener(list,context);
         listView.setOnItemClickListener(itemOnClickListener);

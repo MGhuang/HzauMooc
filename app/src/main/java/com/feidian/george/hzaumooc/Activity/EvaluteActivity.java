@@ -26,6 +26,7 @@ import com.feidian.george.hzaumooc.Bmob.BmobWrite;
 import com.feidian.george.hzaumooc.Bmob.Upload.BmobUpload;
 import com.feidian.george.hzaumooc.Interface.Class.UpdateListener;
 import com.feidian.george.hzaumooc.R;
+import com.feidian.george.hzaumooc.Tool.LoginUtil;
 import com.feidian.george.hzaumooc.Tool.Main_StaticValue;
 
 import java.util.ArrayList;
@@ -177,7 +178,6 @@ public class EvaluteActivity extends Activity implements View.OnClickListener ,U
         setPlay(url);
     }
     void setPlay(String url) {
-        System.out.println("以上内容正常");
         if (Vitamio.initialize(this)) {
             evalute_vedio.setVideoURI(Uri.parse(url));
             MediaController mediaController = new MediaController(this, true, evalute_frame);

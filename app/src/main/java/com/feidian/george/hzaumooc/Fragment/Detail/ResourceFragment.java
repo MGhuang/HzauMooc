@@ -14,16 +14,11 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.feidian.george.hzaumooc.Adapter.Detail.Resource.ResourceAdapter;
-import com.feidian.george.hzaumooc.Adapter.Main.GridAdapter;
 import com.feidian.george.hzaumooc.R;
-import com.feidian.george.hzaumooc.View.TimeLinearLayout;
+import com.feidian.george.hzaumooc.Adapter.Detail.Resource.GridAdapter;
 import com.feidian.george.hzaumooc.View.TimeRecycleView;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -35,8 +30,8 @@ public class ResourceFragment extends Fragment{
     public static final String BUNDLE_UPDATETIME="updatetime";
     public static final String BUNDLE_PPT="ppt";
     public static final String BUNDLE_RESOURCENAME="resourcename";
-    @Bind(R.id.detail_rl_grid)
-    GridView gridView;
+
+
     @Bind(R.id.detail_rl_teacherwords)
     TextView teacherwords;
     @Bind(R.id.detail_rl_timeline_layout)
@@ -50,12 +45,12 @@ public class ResourceFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Bundle bundle = getArguments();
-        resource=bundle.getStringArrayList("ppt");
-        updatetime=bundle.getStringArrayList("updatetime");
-        resourcename=bundle.getStringArrayList("resourcename");
+        resource=bundle.getStringArrayList(BUNDLE_PPT);
+        updatetime=bundle.getStringArrayList(BUNDLE_UPDATETIME);
+        resourcename=bundle.getStringArrayList(BUNDLE_RESOURCENAME);
         View rootView = inflater.inflate(R.layout.f_detail_r_timelayout,container,false);
         ButterKnife.bind(this,rootView);
-        resourceAdapter =new ResourceAdapter(getActivity());
+        resourceAdapter =new ResourceAdapter(getActivity(),resource,updatetime,resourcename);
         timeRecycleView.setAdapter(resourceAdapter);
         timeRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return rootView;

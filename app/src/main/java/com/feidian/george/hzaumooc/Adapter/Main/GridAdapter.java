@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.feidian.george.hzaumooc.Bmob.Bean.CloudClass;
 import com.feidian.george.hzaumooc.Bmob.Bean.MainValue;
 import com.feidian.george.hzaumooc.R;
+import com.feidian.george.hzaumooc.View.RoundRectImageView;
 
 import java.util.ArrayList;
 
@@ -39,7 +40,7 @@ public class GridAdapter extends BaseAdapter{
     class ViewHolder
     {
         @Bind(R.id.main_rg_item_image)
-        ImageView imageView;
+        RoundRectImageView imageView;
         @Bind(R.id.main_rg_item_title)
         TextView textView;
         public ViewHolder(View v)

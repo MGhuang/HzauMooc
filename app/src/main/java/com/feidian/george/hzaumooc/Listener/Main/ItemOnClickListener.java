@@ -12,11 +12,12 @@ import com.feidian.george.hzaumooc.Interface.Main.GetValued;
 
 import java.util.List;
 
+import butterknife.Bind;
+
 /**
  * Created by Administrator on 2016/5/14.
  */
 public class ItemOnClickListener implements AdapterView.OnItemClickListener {
-    public static final String BUNDLE_KEY_CLASSNAME = "class_name";
     private List<?>  list;
     private Context context;
     public ItemOnClickListener(List<?> list, Context context)
@@ -29,7 +30,9 @@ public class ItemOnClickListener implements AdapterView.OnItemClickListener {
         System.out.println(((GetValued)list.get(position)).getValued_class_name());
         Intent intent=new Intent(context, DetailActivity.class);
         Bundle bundle=new Bundle();
-        bundle.putString(BUNDLE_KEY_CLASSNAME,((GetValued)list.get(position)).getValued_class_name());
+        bundle.putString(DetailActivity.BUNDLE_DETAIL_CLASSNAME,((GetValued)list.get(position)).getValued_class_name());
+        bundle.putString(DetailActivity.BUNDLE_DETAIL_TEACHER,((GetValued)list.get(position)).getValued_class_teacher());
+        bundle.putString(DetailActivity.BUNDLE_DETAIL_CLASSKIND,((GetValued)list.get(position)).getValued_class_kind());
         intent.putExtras(bundle);
         context.startActivity(intent);
     }

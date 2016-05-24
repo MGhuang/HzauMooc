@@ -41,13 +41,15 @@
             android:label="DownloadActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".Activity.PersonActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Activity.SuggestActivity"
             android:label="SuggeestActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Activity.EvaluteActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Activity.SearchActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Activity.LRActivity"/>
+        <activity android:name=".Activity.PersonActivity"/>
     </application>
 
 </manifest>

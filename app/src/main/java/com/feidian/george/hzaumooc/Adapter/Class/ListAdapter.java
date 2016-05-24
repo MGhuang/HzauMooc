@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
  * Created by Administrator on 2016/5/14.
  */
 public class ListAdapter extends BaseAdapter{
-    private List<?> list;
+    private List<?> list; // 课程信息,包括课程名字，课程老师名，课程图片，课程网址等
     private Context context;
     private LayoutInflater layoutInflater;
     public ListAdapter(Context context, List<?> arrayList)

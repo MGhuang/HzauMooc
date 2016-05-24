@@ -9,4 +9,6 @@
         <color name="green">#31C27C</color>
         <color name="gray_white">#99ffffff</color>
         <color name="black_overlay">#66000000</color>
+        <color name="timelayout_color">#50ffffff</color>
+    <color name="gray_m">#d8e0e8</color>
     </resources>

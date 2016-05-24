@@ -9,9 +9,11 @@ import android.os.Environment;
 import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.TypedValue;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -52,11 +54,14 @@ public class MainActivity extends BaseActivity
 
 
     MainAdapter adapter;
+    SearchView mSearchView;
     Map<String,ArrayList<?>> map =new HashMap<String, ArrayList<?>>(MainAdapter.ITEM_ACCOUT+2);
     @Bind(R.id.main_list)
     RecyclerView recyclerView;
     @Bind(R.id.main_swipe)
     SwipeRefreshLayout refreshLayout;
+    @Bind(R.id.fab)
+    FloatingActionButton fab;
 
     private Handler handler=new Handler(){
         @Override
@@ -85,12 +90,31 @@ public class MainActivity extends BaseActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        /*toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch(item.getItemId())
+                {
+                    case R.id.main_menu_search:
+                        Intent intent=new Intent(MainActivity.this,SearchActivity.class);
+                        startActivity(intent);
+                        break;
+                    default:
+                        break;
+                }
+                return false;
+            }
+        });*/
         ButterKnife.bind(this);
         //setData();
         Bmob.initialize(this,"bdc6b1e1572437dda9938ac54b702a5b");
 
+
+
         setRecyclerView();
         setSwipeRefreshLayout();
+
+        //设置侧边拉出框
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -102,7 +126,7 @@ public class MainActivity extends BaseActivity
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() {   //返回键监听
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -137,12 +161,19 @@ public class MainActivity extends BaseActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    private void setRecyclerView()
+    private void setRecyclerView()  //初始化RecyclerView
     {
         adapter=new MainAdapter(this,map);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new ListDivider());
         recyclerView.setAdapter(adapter);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,SearchActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     private void setSwipeRefreshLayout()  //设置刷新条
     {
@@ -196,4 +227,12 @@ public class MainActivity extends BaseActivity
         else
             handler.sendEmptyMessage(Main_StaticValue.WRONG_GET_DATA);
     }
+
+/*
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+    */
 }

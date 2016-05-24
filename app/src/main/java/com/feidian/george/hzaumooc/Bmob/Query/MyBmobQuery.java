@@ -3,11 +3,13 @@ package com.feidian.george.hzaumooc.Bmob.Query;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.feidian.george.hzaumooc.Bmob.Bean.AllClass;
 import com.feidian.george.hzaumooc.Bmob.Bean.CloudClass;
 import com.feidian.george.hzaumooc.Bmob.Bean.Evalute;
 import com.feidian.george.hzaumooc.Bmob.Bean.MainValue;
 import com.feidian.george.hzaumooc.Bmob.Bean.PageViewResource;
 import com.feidian.george.hzaumooc.Bmob.Bean.PerfectClass;
+import com.feidian.george.hzaumooc.Bmob.BmobOperate;
 import com.feidian.george.hzaumooc.Exception.GetDataException;
 import com.feidian.george.hzaumooc.Interface.Class.UpdateListener;
 import com.feidian.george.hzaumooc.R;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 
 /**
@@ -25,6 +28,15 @@ import cn.bmob.v3.listener.FindListener;
 public class MyBmobQuery {
 
 
+    public static void findSearch(final String key, final String value, final List<AllClass> list, final Context context, final UpdateListener listener)
+    {
+        new Thread(){
+            @Override
+            public void run() {
+                AllClassQuery(key,value,list,context,listener);
+            }
+        }.start();
+    }
 
     public static void findEvlute(final String key, final String value, final List<Evalute> list, final Context context, final UpdateListener listener)
     {
@@ -141,15 +153,16 @@ public class MyBmobQuery {
     }
     private static void PerfectClassDataQuery(String key,final String value,final Map<String,ArrayList<?>> map,Context context)
     {
-        cn.bmob.v3.BmobQuery<PerfectClass> query=new cn.bmob.v3.BmobQuery<PerfectClass>();
+        BmobQuery<PerfectClass> query=new BmobQuery<PerfectClass>();
         query.addWhereMatches(key,value);
         query.order("-updatedAt");
+        System.out.println("以上成功了1");
         query.findObjects(context, new FindListener<PerfectClass>() {
             @Override
             public void onSuccess(List<PerfectClass> list) {
-                map.put(value,new ArrayList<PerfectClass>(list));
-                System.out.println("PerfectClass"+"成功");
-                System.out.println(map.size());
+                    map.put(value,new ArrayList<PerfectClass>(list));
+                    System.out.println("PerfectClass"+"成功");
+                    System.out.println(map.size());
             }
             @Override
             public void onError(int i, String s) {
@@ -231,6 +244,27 @@ public class MyBmobQuery {
 
             @Override
             public void onError(int i, String s) {
+                listener.errorToast();
+            }
+        });
+    }
+    private static void AllClassQuery(String key, final String value, final List<AllClass> alist, Context context, final UpdateListener listener)
+    {
+        BmobQuery<AllClass> bmobQuery=new BmobQuery<AllClass>();
+        bmobQuery.addWhereEqualTo(key,value);
+        bmobQuery.order("-updatedAt");
+        bmobQuery.setLimit(10);
+        bmobQuery.findObjects(context, new FindListener<AllClass>() {
+            @Override
+            public void onSuccess(List<AllClass> list) {
+                alist.clear();
+                alist.addAll(list);
+                listener.UpdateOperate();
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                alist.clear();
                 listener.errorToast();
             }
         });

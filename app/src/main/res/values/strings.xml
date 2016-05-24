@@ -38,4 +38,16 @@
         <item>2016-05-11</item>
         <item>2016-05-09</item>
     </string-array>
+    <string-array name="static_video">
+        <item>http://211.69.141.12:1221/upload/b87e1021-8fe4-4d8c-abce-21146617e942.mp4</item>
+        <item>http://211.69.141.12:1221/upload/b918780d-23a6-4b4d-b443-7a98edb45d9e.mp4</item>
+        <item>http://211.69.141.12:1221/upload/a03a9cb8-b358-404b-9217-0ffb644c9eb7.mp4</item>
+        <item>http://211.69.141.12:1221/upload/15adb904-f8ca-4c63-ae48-2f8907b006bb.mp4</item>
+        <item>http://211.69.141.12:1221/upload/938bc4b4-e9b1-4fcc-a344-fbd29bee0438.mp4</item>
+        <item>http://211.69.141.12:1221/upload/493cd883-477b-4665-b083-9db9ae12f768.mp4</item>
+        <item>http://211.69.141.12:1221/upload/de3b6332-b9b1-49c5-abe8-93c885e2f84a.mp4</item>
+        <item>http://211.69.141.12:1221/upload/b6511a0c-0716-405d-87a0-d985218ae56d.mp4</item>
+        <item>http://211.69.141.12:1221/upload/0616ad03-8efc-486e-9621-e2a8029f76d5.mp4</item>
+        <item>http://211.69.141.12:1221/upload/0060a33b-d3c3-42b0-a35f-0d453781842c.mp4</item>
+    </string-array>
 </resources>

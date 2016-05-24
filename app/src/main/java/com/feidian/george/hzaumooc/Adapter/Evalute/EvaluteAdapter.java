@@ -58,7 +58,7 @@ public class EvaluteAdapter extends BaseAdapter {
         viewHolder.words.setText(item.getWords());
         return view;
     }
-    public class ViewHolder{
+    class ViewHolder{
         TextView words;
     }
 }

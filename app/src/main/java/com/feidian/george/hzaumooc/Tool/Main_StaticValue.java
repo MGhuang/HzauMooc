@@ -2,6 +2,9 @@ package com.feidian.george.hzaumooc.Tool;
 
 import com.feidian.george.hzaumooc.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Administrator on 2016/5/13.
  */
@@ -31,5 +34,17 @@ public class Main_StaticValue {
     //BmobQuery  findPerfectClass用到
     public static final String PerfectClass_KEY="class_kind";
     public static final String[] PerfectClass_VALUE={PERFECTCLASS_ONE,PERFECTCLASS_TWO,PERFECTCLASS_THREE};
+
+
+    //DetailActivity 静态数据
+    public static final ArrayList<String> Data(String classname)
+    {
+        ArrayList<String> list=new ArrayList<String>(15);
+        for(int i=1;i<=10;i++)
+        {
+            list.add(classname+"第"+i+"讲");
+        }
+        return list;
+    }
 
 }

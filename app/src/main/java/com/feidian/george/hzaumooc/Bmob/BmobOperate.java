@@ -2,6 +2,7 @@ package com.feidian.george.hzaumooc.Bmob;
 
 import android.content.Context;
 
+import com.feidian.george.hzaumooc.Bmob.Bean.AllClass;
 import com.feidian.george.hzaumooc.Bmob.Bean.Evalute;
 import com.feidian.george.hzaumooc.Bmob.Query.MyBmobQuery;
 import com.feidian.george.hzaumooc.Interface.Class.UpdateListener;
@@ -45,6 +46,10 @@ public class BmobOperate {
     public void getEvaluteDate(String key,String value,List<Evalute> list,Context context,UpdateListener listener)
     {
         MyBmobQuery.findEvlute(key,value,list,context,listener);
+    }
+    public void getSearchData(String key, String value, List<AllClass> list, Context context, UpdateListener listener)
+    {
+        MyBmobQuery.findSearch(key,value,list,context,listener);
     }
 
 }

@@ -1,5 +1,7 @@
 package com.feidian.george.hzaumooc.Fragment.Detail;
 
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,23 +22,39 @@ import butterknife.ButterKnife;
 /**
  * Created by Administrator on 2016/5/15.
  */
-public class VideoListFragment  extends Fragment{
+public class VideoListFragment  extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
+    public static final String BUNDLE_CLASSNAME="class_name";
+    public static final String BUNDLE_TEACHER="class_teacher";
     @Bind(R.id.main_swipe)
     SwipeRefreshLayout refreshLayout;
     @Bind(R.id.main_list)
     RecyclerView recyclerView;
 
     VideoListAdapter videoListAdapter;
+    android.os.Handler handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            refreshLayout.setRefreshing(false);
+        }
+    };
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Bundle bundle = getArguments();
+
         View rootView=inflater.inflate(R.layout.content_main,container,false);
         ButterKnife.bind(this,rootView);
-        videoListAdapter = new VideoListAdapter(getActivity());
+        videoListAdapter = new VideoListAdapter(getActivity(),bundle.getString(BUNDLE_CLASSNAME),bundle.getString(BUNDLE_TEACHER));
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),1));
         recyclerView.setAdapter(videoListAdapter);
+        refreshLayout.setOnRefreshListener(this);
         return rootView;
+    }
+
+    @Override
+    public void onRefresh() {
+        videoListAdapter.notifyDataSetChanged();
+        handler.sendEmptyMessage(0);
     }
 }

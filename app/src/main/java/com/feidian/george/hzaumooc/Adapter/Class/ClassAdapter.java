@@ -21,12 +21,11 @@ public class ClassAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private LayoutInflater layoutInflater;
     private Map<String,ArrayList<?>> map;
     private String[] keys;
-    public ClassAdapter(Context context,Map<String,ArrayList<?>> map1,String[] keys)
+    public ClassAdapter(Context context,Map<String,ArrayList<?>> map1)
     {
         this.context=context;
         layoutInflater=LayoutInflater.from(context);
         map=map1;
-        this.keys=keys;
     }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -46,6 +45,10 @@ public class ClassAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     @Override
     public int getItemCount() {
         return map.size();
+    }
+    public void setKeys(String[] keys)
+    {
+        this.keys=keys;
     }
 
 }
